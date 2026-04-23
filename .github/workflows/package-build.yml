@@ -37,7 +37,7 @@ jobs:
             arch: x86_64
       fail-fast: false
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: build windows
       if: contains(matrix.os, 'windows')
       shell: powershell
@@ -71,25 +71,21 @@ jobs:
         make ARCH=${{ matrix.arch }}
         echo UPLOAD_FILE=cutter-deps-qt-linux-${{ matrix.arch }}.tar.gz >> $GITHUB_ENV
         echo UPLOAD_ASSET_TYPE=application/gzip >> $GITHUB_ENV
-    - uses: actions/upload-artifact@v2
-      if: startsWith(github.event.ref, 'refs/tags') == false
+
+    - name: Create or Update Release
+      uses: softprops/action-gh-release@v2
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
       with:
-        name: ${{ env.UPLOAD_FILE }}
-        path: ${{ env.UPLOAD_FILE }}
-        if-no-files-found: warn
-    - name: Get release
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-      id: get_release
-      uses: karliss/get-release@bee343636450eb2e9b85d9f1592d8d73c408dc74
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Upload release assets
-      if: steps.get_release.outputs.upload_url != null
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-          upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ${{ env.UPLOAD_FILE }}
-          asset_name: ${{ env.UPLOAD_FILE }}
-          asset_content_type: ${{ env.UPLOAD_ASSET_TYPE }}
+        tag_name: v1.0.0
+        name: Release v1.0.0
+        body: "Automated build of Cutter dependencies by ${{ github.actor }}."
+        draft: false
+        prerelease: false
+        files: ${{ env.UPLOAD_FILE }}
+        append_body: true 
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set Git Identity
+      run: |
+        git config --global user.name "PremadeS"
+        git config --global user.email "dummy-username@users.noreply.github.com"
