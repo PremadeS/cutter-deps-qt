@@ -76,8 +76,8 @@ jobs:
       uses: softprops/action-gh-release@v2
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
       with:
-        tag_name: v1.0.0
-        name: Release v1.0.0
+        tag_name: v2
+        name: Release v2
         body: "Automated build of Cutter dependencies by ${{ github.actor }}."
         draft: false
         prerelease: false
