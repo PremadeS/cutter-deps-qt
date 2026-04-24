@@ -25,7 +25,7 @@ endif
 BASE_URL=https://download.qt.io
 
 # 6.11 has the Dir errors (see the log and update this)
-QT_VER_FULL=6.11.2
+QT_VER_FULL=6.11.0
 QT_VER_SHORT=6.11
 ifeq (${PLATFORM},win)
 QT_SRC_FILE=qt-everywhere-src-${QT_VER_FULL}.zip
