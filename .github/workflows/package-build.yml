@@ -27,10 +27,10 @@ jobs:
             os: ubuntu-20.04
             arch: x86_64
           - name: macos-x86_64
-            os: macos-12
+            os: macos-26
             arch: x86_64
           - name: macos-arm64
-            os: macos-14
+            os: macos-26
             arch: arm64
           - name: windows-x86_64
             os: windows-2019
@@ -65,7 +65,7 @@ jobs:
           libglu1-mesa-dev \
           libxcb-*-dev \
           libclang-12-dev \
-          llvm-12
+          llvm-22
         apt list --installed
         sudo apt remove llvm-10 clang-10
         make ARCH=${{ matrix.arch }}
