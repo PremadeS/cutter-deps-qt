@@ -119,7 +119,20 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtandroidextras `
     -x'!'${QT_SRC_DIR}/qtquick3d `
     -x'!'${QT_SRC_DIR}/qtgraphs `
-    -x'!'${QT_SRC_DIR}/qtwebchannel
+    -x'!'${QT_SRC_DIR}/qtlottie `
+    -x'!'${QT_SRC_DIR}/qtwebchannel `
+    -x'!'${QT_SRC_DIR}/qtactiveqt `
+    -x'!'${QT_SRC_DIR}/qtcoap `
+    -x'!'${QT_SRC_DIR}/qtgrpc `
+    -x'!'${QT_SRC_DIR}/qthttpserver `
+    -x'!'${QT_SRC_DIR}/qtlanguageserver `
+    -x'!'${QT_SRC_DIR}/qtnetworkauth `
+    -x'!'${QT_SRC_DIR}/qtopcua `
+    -x'!'${QT_SRC_DIR}/qtpositioning `
+    -x'!'${QT_SRC_DIR}/qtquick3dphysics `
+    -x'!'${QT_SRC_DIR}/qtquickeffectmaker `
+    -x'!'${QT_SRC_DIR}/qtremoteobjects `
+    -x'!'${QT_SRC_DIR}/qtshadertools
 if (-not $?) {
     Fatal-Error "Failed to extract source"
 }
