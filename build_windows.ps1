@@ -94,6 +94,9 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtdoc `
     -x'!'${QT_SRC_DIR}/qtscript `
     -x'!'${QT_SRC_DIR}/qtdatavis3d `
+    -x'!'${QT_SRC_DIR}/qtdeclarative `
+    -x'!'${QT_SRC_DIR}/qtcanvaspainter `
+    -x'!'${QT_SRC_DIR}/qtquicktimeline `
     -x'!'${QT_SRC_DIR}/qtgamepad `
     -x'!'${QT_SRC_DIR}/qtlocation `
     -x'!'${QT_SRC_DIR}/qtgraphicaleffects `
@@ -114,7 +117,24 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtquickcontrols2 `
     -x'!'${QT_SRC_DIR}/qtx11extras `
     -x'!'${QT_SRC_DIR}/qtandroidextras `
-    -x'!'${QT_SRC_DIR}/qtwebchannel
+    -x'!'${QT_SRC_DIR}/qtquick3d `
+    -x'!'${QT_SRC_DIR}/qtgraphs `
+    -x'!'${QT_SRC_DIR}/qtlottie `
+    -x'!'${QT_SRC_DIR}/qtwebchannel `
+    -x'!'${QT_SRC_DIR}/qtactiveqt `
+    -x'!'${QT_SRC_DIR}/qtcoap `
+    -x'!'${QT_SRC_DIR}/qtgrpc `
+    -x'!'${QT_SRC_DIR}/qthttpserver `
+    -x'!'${QT_SRC_DIR}/qtlanguageserver `
+    -x'!'${QT_SRC_DIR}/qtnetworkauth `
+    -x'!'${QT_SRC_DIR}/qtopcua `
+    -x'!'${QT_SRC_DIR}/qtpositioning `
+    -x'!'${QT_SRC_DIR}/qtquick3dphysics `
+    -x'!'${QT_SRC_DIR}/qtquickeffectmaker `
+    -x'!'${QT_SRC_DIR}/qtremoteobjects `
+    -x'!'${QT_SRC_DIR}/qtmqtt `
+    -x'!'${QT_SRC_DIR}/qtmultimedia `
+    -x'!'${QT_SRC_DIR}/qtshadertools
 if (-not $?) {
     Fatal-Error "Failed to extract source"
 }
