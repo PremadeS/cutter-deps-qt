@@ -68,12 +68,12 @@ function DownloadAndCheckFile() {
 
 SetupVsEnv
 
-$version_base = "6.7"
-$version_full = "6.7.2"
-#$url = "https://download.qt.io/official_releases/qt/$version_base/$version_full/single/qt-everywhere-src-$version_full.zip"
-$url = "http://master.qt.io/archive/qt/$version_base/$version_full/single/qt-everywhere-src-$version_full.zip"
+$version_base = "6.11"
+$version_full = "6.11.0"
+$url = "https://download.qt.io/official_releases/qt/$version_base/$version_full/single/qt-everywhere-src-$version_full.zip"
+#$url = "http://master.qt.io/archive/qt/$version_base/$version_full/single/qt-everywhere-src-$version_full.zip"
 $output = "qt-everywhere-src-$version_full.zip"
-$hash_expected = "e71c1f1b453b2b5a34173307d2ba9d35d3383e9727fbc34dc7eef189f351bca5"
+$hash_expected = "0c8f99a4727a63262d5241201b84c883ab61617bdc5c431820073f2ebcd75ad5"
 $QT_SRC_DIR = "qt-everywhere-src-$version_full"
 $qt_build_dir = "$QT_SRC_DIR/build"
 $QT_PREFIX = "$PSScriptRoot/qt"
@@ -91,7 +91,6 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtcanvas3d `
     -x'!'${QT_SRC_DIR}/qtcharts `
     -x'!'${QT_SRC_DIR}/qtconnectivity `
-    -x'!'${QT_SRC_DIR}/qtdeclarative `
     -x'!'${QT_SRC_DIR}/qtdoc `
     -x'!'${QT_SRC_DIR}/qtscript `
     -x'!'${QT_SRC_DIR}/qtdatavis3d `
@@ -126,7 +125,7 @@ Write-Output "build dir '$qt_build_dir'"
 Set-Location -Path $qt_build_dir
 Write-Output "Current dir"
 Get-Location
-cmd /c "..\configure.bat -prefix `"${QT_PREFIX}`" -opensource -confirm-license -release -qt-libpng -qt-libjpeg -no-feature-cups -no-feature-icu -no-sql-db2 -no-sql-ibase -no-sql-mysql -no-sql-oci -no-sql-odbc -no-sql-psql -no-sql-sqlite -no-feature-assistant -no-feature-clang -no-feature-designer -nomake tests -nomake examples -skip qt3d -skip qtactiveqt -skip qtcharts -skip qtcoap -skip qtconnectivity -skip qtdatavis3d -skip qtdeclarative -skip qtdoc -skip qtgrpc -skip qtgraphs -skip qthttpserver -skip qtlanguageserver -skip qtlocation -skip qtlottie -skip qtmqtt -skip qtmultimedia -skip qtnetworkauth -skip qtopcua -skip qtpositioning -skip qtquick3d -skip qtquick3dphysics -skip qtquickeffectmaker -skip qtquicktimeline -skip qtremoteobjects -skip qtscxml -skip qtsensors -skip qtserialbus -skip qtserialport -skip qtshadertools -skip qtspeech -skip qttranslations -skip qtvirtualkeyboard -skip qtwebchannel -skip qtwebengine -skip qtwebsockets -skip qtwebview -skip qtwayland -skip qtmacextras -skip qtx11extras 2>&1"
+cmd /c "..\configure.bat -prefix `"${QT_PREFIX}`" -opensource -confirm-license -release -qt-libpng -qt-libjpeg -no-feature-cups -no-feature-icu -no-sql-db2 -no-sql-ibase -no-sql-mysql -no-sql-oci -no-sql-odbc -no-sql-psql -no-sql-sqlite -no-feature-assistant -no-feature-clang -no-feature-designer -nomake tests -nomake examples -skip qt3d -skip qtactiveqt -skip qtcharts -skip qtcoap -skip qtconnectivity -skip qtdatavis3d -skip qtdeclarative -skip qtdoc -skip qtgrpc -skip qtgraphs -skip qthttpserver -skip qtlanguageserver -skip qtlocation -skip qtlottie -skip qtmqtt -skip qtmultimedia -skip qtnetworkauth -skip qtopcua -skip qtpositioning -skip qtquick3d -skip qtquick3dphysics -skip qtquickeffectmaker -skip qtquicktimeline -skip qtremoteobjects -skip qtscxml -skip qtsensors -skip qtserialbus -skip qtserialport -skip qtshadertools -skip qtspeech -skip qttranslations -skip qtvirtualkeyboard -skip qtwebchannel -skip qtwebengine -skip qtwebsockets -skip qtwebview -skip qtwayland -skip qtmacextras -skip qtx11extras -skip qtcanvaspainter 2>&1"
 if (-not $?) {
      Fatal-Error "Failed to configure qt"
 }

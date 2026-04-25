@@ -64,6 +64,8 @@ jobs:
           libgl1-mesa-dev \
           libglu1-mesa-dev \
           libxcb-*-dev \
+          curl
+
         curl -O https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 20
