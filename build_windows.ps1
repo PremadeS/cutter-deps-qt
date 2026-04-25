@@ -91,8 +91,6 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtcanvas3d `
     -x'!'${QT_SRC_DIR}/qtcharts `
     -x'!'${QT_SRC_DIR}/qtconnectivity `
-    -x'!'${QT_SRC_DIR}/qtdeclarative `
-    -x'!'${QT_SRC_DIR}/qtcanvaspainter `
     -x'!'${QT_SRC_DIR}/qtdoc `
     -x'!'${QT_SRC_DIR}/qtscript `
     -x'!'${QT_SRC_DIR}/qtdatavis3d `
