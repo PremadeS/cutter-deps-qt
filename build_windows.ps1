@@ -132,6 +132,8 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtquick3dphysics `
     -x'!'${QT_SRC_DIR}/qtquickeffectmaker `
     -x'!'${QT_SRC_DIR}/qtremoteobjects `
+    -x'!'${QT_SRC_DIR}/qtmqtt `
+    -x'!'${QT_SRC_DIR}/qtmultimedia `
     -x'!'${QT_SRC_DIR}/qtshadertools
 if (-not $?) {
     Fatal-Error "Failed to extract source"
