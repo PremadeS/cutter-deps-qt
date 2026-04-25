@@ -118,6 +118,7 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtx11extras `
     -x'!'${QT_SRC_DIR}/qtandroidextras `
     -x'!'${QT_SRC_DIR}/qtquick3d `
+    -x'!'${QT_SRC_DIR}/qtgraphs `
     -x'!'${QT_SRC_DIR}/qtwebchannel
 if (-not $?) {
     Fatal-Error "Failed to extract source"
