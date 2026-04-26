@@ -189,7 +189,6 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 			-no-sql-psql \
 			-no-sql-sqlite \
 			-no-feature-assistant \
-			-no-feature-clang \
 			-no-feature-designer \
 			-nomake tests \
 			-nomake examples \
