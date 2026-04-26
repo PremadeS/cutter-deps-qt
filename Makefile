@@ -80,41 +80,70 @@ endif
 ifeq (${PLATFORM},win)
   define extract
 	7z x "$1" -bsp1 \
-		-x'!'${QT_SRC_DIR}/qtwebengine \
-		-x'!'${QT_SRC_DIR}/qt3d \
-		-x'!'${QT_SRC_DIR}/qtcanvas3d \
-		-x'!'${QT_SRC_DIR}/qtcharts \
-		-x'!'${QT_SRC_DIR}/qtconnectivity \
-		-x'!'${QT_SRC_DIR}/qtdeclarative \
-		-x'!'${QT_SRC_DIR}/qtdoc \
-		-x'!'${QT_SRC_DIR}/qtscript \
-		-x'!'${QT_SRC_DIR}/qtdatavis3d \
-		-x'!'${QT_SRC_DIR}/qtgamepad \
-		-x'!'${QT_SRC_DIR}/qtlocation \
-		-x'!'${QT_SRC_DIR}/qtgraphicaleffects \
-		-x'!'${QT_SRC_DIR}/qtmultimedia \
-		-x'!'${QT_SRC_DIR}/qtpurchasing \
-		-x'!'${QT_SRC_DIR}/qtscxml \
-		-x'!'${QT_SRC_DIR}/qtsensors \
-		-x'!'${QT_SRC_DIR}/qtserialbus \
-		-x'!'${QT_SRC_DIR}/qtserialport \
-		-x'!'${QT_SRC_DIR}/qtspeech \
-		-x'!'${QT_SRC_DIR}/qttranslations \
-		-x'!'${QT_SRC_DIR}/qtvirtualkeyboard \
-		-x'!'${QT_SRC_DIR}/qtwebglplugin \
-		-x'!'${QT_SRC_DIR}/qtwebsockets \
-		-x'!'${QT_SRC_DIR}/qtwebview \
-		-x'!'${QT_SRC_DIR}/qtmacextras \
-		-x'!'${QT_SRC_DIR}/qtwayland \
-		-x'!'${QT_SRC_DIR}/qtquickcontrols \
-		-x'!'${QT_SRC_DIR}/qtquickcontrols2 \
-		-x'!'${QT_SRC_DIR}/qtx11extras \
-		-x'!'${QT_SRC_DIR}/qtandroidextras \
-		-x'!'${QT_SRC_DIR}/qtwebchannel
+			-x'!'${QT_SRC_DIR}/qtwebengine `
+			-x'!'${QT_SRC_DIR}/qt3d `
+			-x'!'${QT_SRC_DIR}/qtcanvas3d `
+			-x'!'${QT_SRC_DIR}/qtcharts `
+			-x'!'${QT_SRC_DIR}/qtconnectivity `
+			-x'!'${QT_SRC_DIR}/qtdoc `
+			-x'!'${QT_SRC_DIR}/qtscript `
+			-x'!'${QT_SRC_DIR}/qtdatavis3d `
+			-x'!'${QT_SRC_DIR}/qtdeclarative `
+			-x'!'${QT_SRC_DIR}/qtcanvaspainter `
+			-x'!'${QT_SRC_DIR}/qtquicktimeline `
+			-x'!'${QT_SRC_DIR}/qtgamepad `
+			-x'!'${QT_SRC_DIR}/qtlocation `
+			-x'!'${QT_SRC_DIR}/qtgraphicaleffects `
+			-x'!'${QT_SRC_DIR}/qtmultimedia `
+			-x'!'${QT_SRC_DIR}/qtpurchasing `
+			-x'!'${QT_SRC_DIR}/qtscxml `
+			-x'!'${QT_SRC_DIR}/qtsensors `
+			-x'!'${QT_SRC_DIR}/qtserialbus `
+			-x'!'${QT_SRC_DIR}/qtserialport `
+			-x'!'${QT_SRC_DIR}/qtspeech `
+			-x'!'${QT_SRC_DIR}/qtvirtualkeyboard `
+			-x'!'${QT_SRC_DIR}/qtwebglplugin `
+			-x'!'${QT_SRC_DIR}/qtwebsockets `
+			-x'!'${QT_SRC_DIR}/qtwebview `
+			-x'!'${QT_SRC_DIR}/qtmacextras `
+			-x'!'${QT_SRC_DIR}/qtwayland `
+			-x'!'${QT_SRC_DIR}/qtquickcontrols `
+			-x'!'${QT_SRC_DIR}/qtquickcontrols2 `
+			-x'!'${QT_SRC_DIR}/qtx11extras `
+			-x'!'${QT_SRC_DIR}/qtandroidextras `
+			-x'!'${QT_SRC_DIR}/qtquick3d `
+			-x'!'${QT_SRC_DIR}/qtgraphs `
+			-x'!'${QT_SRC_DIR}/qtlottie `
+			-x'!'${QT_SRC_DIR}/qtwebchannel `
+			-x'!'${QT_SRC_DIR}/qtactiveqt `
+			-x'!'${QT_SRC_DIR}/qtcoap `
+			-x'!'${QT_SRC_DIR}/qtgrpc `
+			-x'!'${QT_SRC_DIR}/qthttpserver `
+			-x'!'${QT_SRC_DIR}/qtlanguageserver `
+			-x'!'${QT_SRC_DIR}/qtnetworkauth `
+			-x'!'${QT_SRC_DIR}/qtopcua `
+			-x'!'${QT_SRC_DIR}/qtpositioning `
+			-x'!'${QT_SRC_DIR}/qtquick3dphysics `
+			-x'!'${QT_SRC_DIR}/qtquickeffectmaker `
+			-x'!'${QT_SRC_DIR}/qtremoteobjects `
+			-x'!'${QT_SRC_DIR}/qtmqtt `
+			-x'!'${QT_SRC_DIR}/qtmultimedia `
+			-x'!'${QT_SRC_DIR}/qtshadertools
   endef
 else
   define extract
 	tar -xf "$1"
+	cd ${QT_SRC_DIR} && rm -rf qtwebengine qt3d qtcanvas3d qtcharts \
+		qtconnectivity qtdoc qtscript qtdatavis3d qtdeclarative \
+		qtcanvaspainter qtquicktimeline qtgamepad qtlocation \
+		qtgraphicaleffects qtmultimedia qtpurchasing qtscxml \
+		qtsensors qtserialbus qtserialport qtspeech qtvirtualkeyboard \
+		qtwebglplugin qtwebsockets qtwebview qtmacextras qtwayland \
+		qtquickcontrols qtquickcontrols2 qtx11extras qtandroidextras \
+		qtquick3d qtgraphs qtlottie qtwebchannel qtactiveqt qtcoap \
+		qtgrpc qthttpserver qtlanguageserver qtnetworkauth qtopcua \
+		qtpositioning qtquick3dphysics qtquickeffectmaker qtremoteobjects \
+		qtmqtt qtshadertools
   endef
 endif
 
@@ -210,6 +239,10 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 			-skip qtwebengine \
 			-skip qtwebsockets \
 			-skip qtwebview \
+			-skip qtwayland \
+			-skip qtmacextras \
+			-skip qtx11extras \
+			-skip qtcanvaspainter \
 			-DCMAKE_WrapClang_FOUND=false \
 			${PLATFORM_QT_OPTIONS}
 
