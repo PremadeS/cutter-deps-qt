@@ -171,6 +171,7 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 			-no-sql-psql \
 			-no-sql-sqlite \
 			-no-feature-assistant \
+			-no-feature-clang \
 			-no-feature-designer \
 			-nomake tests \
 			-nomake examples \
@@ -210,6 +211,10 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 			-skip qtwebengine \
 			-skip qtwebsockets \
 			-skip qtwebview \
+			-skip qtwayland \
+			-skip qtmacextras \
+			-skip qtx11extras \
+			-skip qtcanvaspainter \
 			-DCMAKE_WrapClang_FOUND=false \
 			${PLATFORM_QT_OPTIONS}
 

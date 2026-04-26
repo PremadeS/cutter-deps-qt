@@ -66,7 +66,6 @@ jobs:
           libxcb-*-dev \
           curl
 
-        dpkg -l | grep openjp2
         curl -O https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 20
