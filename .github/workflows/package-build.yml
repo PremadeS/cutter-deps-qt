@@ -24,7 +24,7 @@ jobs:
         ]
         include:
           - name: linux-x86_64
-            os: ubuntu-20.04
+            os: ubuntu-22.04
             arch: x86_64
           - name: macos-x86_64
             os: macos-14
@@ -33,7 +33,7 @@ jobs:
             os: macos-14
             arch: arm64
           - name: windows-x86_64
-            os: windows-2019
+            os: windows-2022
             arch: x86_64
       fail-fast: false
     steps:
