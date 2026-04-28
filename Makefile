@@ -86,6 +86,8 @@ SKIP_MODULES := qtwebengine qt3d qtcanvas3d qtcharts qtconnectivity qtdeclarativ
                 qtopcua qtpositioning qtquick3dphysics qtquickeffectmaker \
                 qtremoteobjects qtmqtt qtshadertools qtcanvaspainter qtquicktimeline
 
+QT_CONFIGURE_SKIPS := $(addprefix -skip , $(SKIP_MODULES))
+
 ifeq (${PLATFORM},win)
   7Z_EXCLUDES := $(addprefix -x!${QT_SRC_DIR}/, $(SKIP_MODULES))
 
@@ -134,7 +136,6 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 	@echo "#########################"
 	@echo ""
 	
-	QT_CONFIGURE_SKIPS := $(addprefix -skip , $(SKIP_MODULES))
 	
 	# -nomake tools 
 	mkdir -p "${QT_BUILD_DIR}"
