@@ -91,7 +91,16 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ${{ env.UPLOAD_FILE }}
-          asset_name: ${{ env.UPLOAD_FILE }}
-          asset_content_type: ${{ env.UPLOAD_ASSET_TYPE }}
+        tag_name: v4
+        name: Release v4
+        body: "Automated build of Cutter dependencies by ${{ github.actor }}."
+        draft: false
+        prerelease: false
+        files: ${{ env.UPLOAD_FILE }}
+        append_body: true 
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set Git Identity
+      run: |
+        git config --global user.name "PremadeS"
+        git config --global user.email "dummy-username@users.noreply.github.com"
