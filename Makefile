@@ -24,7 +24,6 @@ endif
 #BASE_URL=http://www.mirrorservice.org/sites/download.qt-project.org
 BASE_URL=https://download.qt.io
 
-# 6.11 has the Dir errors (see the log and update this)
 QT_VER_FULL=6.11.0
 QT_VER_SHORT=6.11
 ifeq (${PLATFORM},win)
@@ -239,10 +238,28 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 			-skip qtwebengine \
 			-skip qtwebsockets \
 			-skip qtwebview \
-			-skip qtwayland \
+      -skip qtwayland \
 			-skip qtmacextras \
 			-skip qtx11extras \
+			-skip qtquick3d \
+			-skip qtgraphs \
+			-skip qtlottie \
+			-skip qtactiveqt \
+			-skip qtcoap \
+			-skip qtgrpc \
+			-skip qthttpserver \
+			-skip qtlanguageserver \
+			-skip qtnetworkauth \
+			-skip qtopcua \
+			-skip qtpositioning \
+			-skip qtquick3dphysics \
+			-skip qtquickeffectmaker \
+			-skip qtremoteobjects \
+			-skip qtmqtt \
+			-skip qtmultimedia \
+			-skip qtshadertools \
 			-skip qtcanvaspainter \
+			-skip qtquicktimeline \
 			-DCMAKE_WrapClang_FOUND=false \
 			${PLATFORM_QT_OPTIONS}
 

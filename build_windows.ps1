@@ -107,6 +107,7 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtserialbus `
     -x'!'${QT_SRC_DIR}/qtserialport `
     -x'!'${QT_SRC_DIR}/qtspeech `
+    -x'!'${QT_SRC_DIR}/qttranslations `
     -x'!'${QT_SRC_DIR}/qtvirtualkeyboard `
     -x'!'${QT_SRC_DIR}/qtwebglplugin `
     -x'!'${QT_SRC_DIR}/qtwebsockets `
@@ -117,10 +118,10 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtquickcontrols2 `
     -x'!'${QT_SRC_DIR}/qtx11extras `
     -x'!'${QT_SRC_DIR}/qtandroidextras `
+    -x'!'${QT_SRC_DIR}/qtwebchannel `
     -x'!'${QT_SRC_DIR}/qtquick3d `
     -x'!'${QT_SRC_DIR}/qtgraphs `
     -x'!'${QT_SRC_DIR}/qtlottie `
-    -x'!'${QT_SRC_DIR}/qtwebchannel `
     -x'!'${QT_SRC_DIR}/qtactiveqt `
     -x'!'${QT_SRC_DIR}/qtcoap `
     -x'!'${QT_SRC_DIR}/qtgrpc `
@@ -134,7 +135,10 @@ Write-Output "Extracting"
     -x'!'${QT_SRC_DIR}/qtremoteobjects `
     -x'!'${QT_SRC_DIR}/qtmqtt `
     -x'!'${QT_SRC_DIR}/qtmultimedia `
-    -x'!'${QT_SRC_DIR}/qtshadertools
+    -x'!'${QT_SRC_DIR}/qtshadertools `
+    -x'!'${QT_SRC_DIR}/qtdeclarative `
+    -x'!'${QT_SRC_DIR}/qtcanvaspainter `
+    -x'!'${QT_SRC_DIR}/qtquicktimeline
 if (-not $?) {
     Fatal-Error "Failed to extract source"
 }
@@ -145,7 +149,7 @@ Write-Output "build dir '$qt_build_dir'"
 Set-Location -Path $qt_build_dir
 Write-Output "Current dir"
 Get-Location
-cmd /c "..\configure.bat -prefix `"${QT_PREFIX}`" -opensource -confirm-license -release -qt-libpng -qt-libjpeg -no-feature-cups -no-feature-icu -no-sql-db2 -no-sql-ibase -no-sql-mysql -no-sql-oci -no-sql-odbc -no-sql-psql -no-sql-sqlite -no-feature-assistant -no-feature-clang -no-feature-designer -nomake tests -nomake examples -skip qt3d -skip qtactiveqt -skip qtcharts -skip qtcoap -skip qtconnectivity -skip qtdatavis3d -skip qtdeclarative -skip qtdoc -skip qtgrpc -skip qtgraphs -skip qthttpserver -skip qtlanguageserver -skip qtlocation -skip qtlottie -skip qtmqtt -skip qtmultimedia -skip qtnetworkauth -skip qtopcua -skip qtpositioning -skip qtquick3d -skip qtquick3dphysics -skip qtquickeffectmaker -skip qtquicktimeline -skip qtremoteobjects -skip qtscxml -skip qtsensors -skip qtserialbus -skip qtserialport -skip qtshadertools -skip qtspeech -skip qttranslations -skip qtvirtualkeyboard -skip qtwebchannel -skip qtwebengine -skip qtwebsockets -skip qtwebview -skip qtwayland -skip qtmacextras -skip qtx11extras -skip qtcanvaspainter 2>&1"
+cmd /c "..\configure.bat -prefix `"${QT_PREFIX}`" -opensource -confirm-license -release -qt-libpng -qt-libjpeg -no-feature-cups -no-feature-icu -no-sql-db2 -no-sql-ibase -no-sql-mysql -no-sql-oci -no-sql-odbc -no-sql-psql -no-sql-sqlite -no-feature-assistant -no-feature-clang -no-feature-designer -nomake tests -nomake examples -skip qt3d -skip qtactiveqt -skip qtcharts -skip qtcoap -skip qtconnectivity -skip qtdatavis3d -skip qtdeclarative -skip qtdoc -skip qtgrpc -skip qtgraphs -skip qthttpserver -skip qtlanguageserver -skip qtlocation -skip qtlottie -skip qtmqtt -skip qtmultimedia -skip qtnetworkauth -skip qtopcua -skip qtpositioning -skip qtquick3d -skip qtquick3dphysics -skip qtquickeffectmaker -skip qtquicktimeline -skip qtremoteobjects -skip qtscxml -skip qtsensors -skip qtserialbus -skip qtserialport -skip qtshadertools -skip qtspeech -skip qttranslations -skip qtvirtualkeyboard -skip qtwebchannel -skip qtwebengine -skip qtwebsockets -skip qtwebview -skip qtwayland -skip qtmacextras -skip qtx11extras -skip	qtquick3d -skip	qtgraphs -skip qtlottie -skip	qtactiveqt -skip qtcoap -skip	qtgrpc -skip qthttpserver -skip	qtlanguageserver -skip qtnetworkauth -skip qtopcua -skip	qtpositioning -skip	qtquick3dphysics -skip qtquickeffectmaker -skip	qtremoteobjects -skip	qtmqtt -skip qtmultimedia -skip	qtshadertools -skip	qtcanvaspainter -skip	qtquicktimeline 2>&1"
 if (-not $?) {
      Fatal-Error "Failed to configure qt"
 }
