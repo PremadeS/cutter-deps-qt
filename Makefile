@@ -133,7 +133,9 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 	@echo "# Building Qt           #"
 	@echo "#########################"
 	@echo ""
-
+	
+	QT_CONFIGURE_SKIPS := $(addprefix -skip , $(SKIP_MODULES))
+	
 	# -nomake tools 
 	mkdir -p "${QT_BUILD_DIR}"
 	cd "${QT_BUILD_DIR}" && \
@@ -156,61 +158,7 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 			-no-feature-designer \
 			-nomake tests \
 			-nomake examples \
-			-skip qt3d \
-			-skip qtactiveqt \
-			-skip qtcharts \
-			-skip qtcoap \
-			-skip qtconnectivity \
-			-skip qtdatavis3d \
-			-skip qtdeclarative \
-			-skip qtdoc \
-			-skip qtgraphs \
-			-skip qtgrpc \
-			-skip qthttpserver \
-			-skip qtlanguageserver \
-			-skip qtlocation \
-			-skip qtlottie \
-			-skip qtmqtt \
-			-skip qtmultimedia \
-			-skip qtnetworkauth \
-			-skip qtopcua \
-			-skip qtpositioning \
-			-skip qtquick3d \
-			-skip qtquick3dphysics \
-			-skip qtquickeffectmaker \
-			-skip qtquicktimeline \
-			-skip qtremoteobjects \
-			-skip qtscxml \
-			-skip qtsensors \
-			-skip qtserialbus \
-			-skip qtserialport \
-			-skip qtshadertools \
-			-skip qtspeech \
-			-skip qttranslations \
-			-skip qtvirtualkeyboard \
-			-skip qtwebchannel \
-			-skip qtwebengine \
-			-skip qtwebsockets \
-			-skip qtwebview \
-			-skip qtquick3d \
-			-skip qtgraphs \
-			-skip qtlottie \
-			-skip qtactiveqt \
-			-skip qtcoap \
-			-skip qtgrpc \
-			-skip qthttpserver \
-			-skip qtlanguageserver \
-			-skip qtnetworkauth \
-			-skip qtopcua \
-			-skip qtpositioning \
-			-skip qtquick3dphysics \
-			-skip qtquickeffectmaker \
-			-skip qtremoteobjects \
-			-skip qtmqtt \
-			-skip qtmultimedia \
-			-skip qtshadertools \
-			-skip qtcanvaspainter \
-			-skip qtquicktimeline \
+			$(QT_CONFIGURE_SKIPS) \
 			-DCMAKE_WrapClang_FOUND=false \
 			${PLATFORM_QT_OPTIONS}
 
