@@ -134,56 +134,6 @@ ifeq (${PLATFORM},win)
 else
   define extract
 	tar -xf "$1"
-	cd ${QT_SRC_DIR}
-	rm -rf qtwebengine \
-		qt3d \
-		qtcanvas3d \
-		qtcharts \
-		qtconnectivity \
-		qtdoc \
-		qtscript \
-		qtdatavis3d \
-		qtdeclarative \
-		qtcanvaspainter \
-		qtquicktimeline \
-		qtgamepad \
-		qtlocation \
-		qtgraphicaleffects \
-		qtmultimedia \
-		qtpurchasing \
-		qtscxml \
-		qtsensors \
-		qtserialbus \
-		qtserialport \
-		qtspeech \
-		qttranslations \
-		qtvirtualkeyboard \
-		qtwebglplugin \
-		qtwebsockets \
-		qtwebview \
-		qtmacextras \
-		qtwayland \
-		qtquickcontrols \
-		qtquickcontrols2 \
-		qtx11extras \
-		qtandroidextras \
-		qtquick3d \
-		qtgraphs \
-		qtlottie \
-		qtwebchannel \
-		qtactiveqt \
-		qtcoap \
-		qtgrpc \
-		qthttpserver \
-		qtlanguageserver \
-		qtnetworkauth \
-		qtopcua \
-		qtpositioning \
-		qtquick3dphysics \
-		qtquickeffectmaker \
-		qtremoteobjects \
-		qtmqtt \
-		qtshadertools
   endef
 endif
 
