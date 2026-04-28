@@ -134,7 +134,7 @@ ifeq (${PLATFORM},win)
 else
   define extract
 	tar -xf "$1"
-	endef
+  endef
 endif
 
 define download_extract
