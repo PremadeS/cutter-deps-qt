@@ -24,15 +24,15 @@ endif
 #BASE_URL=http://www.mirrorservice.org/sites/download.qt-project.org
 BASE_URL=https://download.qt.io
 
-QT_VER_FULL=6.7.2
-QT_VER_SHORT=6.7
+QT_VER_FULL=6.11.0
+QT_VER_SHORT=6.11
 ifeq (${PLATFORM},win)
 QT_SRC_FILE=qt-everywhere-src-${QT_VER_FULL}.zip
-QT_SRC_MD5=69c87bb306ab78b988fb69819c32f3de
+QT_SRC_MD5=a0c1765cfd135eed64a3c0535cf27318
 QT_SRC_URL=${BASE_URL}/official_releases/qt/${QT_VER_SHORT}/${QT_VER_FULL}/single/${QT_SRC_FILE}
 else
 QT_SRC_FILE=qt-everywhere-src-${QT_VER_FULL}.tar.xz
-QT_SRC_MD5=06d35b47349c7c0a45710daad359e07b
+QT_SRC_MD5=a93e9f424a9d11ee8d67bf8fb1af4772
 QT_SRC_URL=${BASE_URL}/official_releases/qt/${QT_VER_SHORT}/${QT_VER_FULL}/single/${QT_SRC_FILE}
 endif
 
@@ -109,7 +109,27 @@ ifeq (${PLATFORM},win)
 		-x'!'${QT_SRC_DIR}/qtquickcontrols2 \
 		-x'!'${QT_SRC_DIR}/qtx11extras \
 		-x'!'${QT_SRC_DIR}/qtandroidextras \
-		-x'!'${QT_SRC_DIR}/qtwebchannel
+		-x'!'${QT_SRC_DIR}/qtwebchannel \
+		-x'!'${QT_SRC_DIR}/qtquick3d \
+		-x'!'${QT_SRC_DIR}/qtgraphs \
+		-x'!'${QT_SRC_DIR}/qtlottie \
+		-x'!'${QT_SRC_DIR}/qtactiveqt \
+		-x'!'${QT_SRC_DIR}/qtcoap \
+		-x'!'${QT_SRC_DIR}/qtgrpc \
+		-x'!'${QT_SRC_DIR}/qthttpserver \
+		-x'!'${QT_SRC_DIR}/qtlanguageserver \
+		-x'!'${QT_SRC_DIR}/qtnetworkauth \
+		-x'!'${QT_SRC_DIR}/qtopcua \
+		-x'!'${QT_SRC_DIR}/qtpositioning \
+		-x'!'${QT_SRC_DIR}/qtquick3dphysics \
+		-x'!'${QT_SRC_DIR}/qtquickeffectmaker \
+		-x'!'${QT_SRC_DIR}/qtremoteobjects \
+		-x'!'${QT_SRC_DIR}/qtmqtt \
+		-x'!'${QT_SRC_DIR}/qtmultimedia \
+		-x'!'${QT_SRC_DIR}/qtshadertools \
+		-x'!'${QT_SRC_DIR}/qtdeclarative \
+		-x'!'${QT_SRC_DIR}/qtcanvaspainter \
+		-x'!'${QT_SRC_DIR}/qtquicktimeline
   endef
 else
   define extract
@@ -173,42 +193,43 @@ qt: ${QT_SRC_DIR} ${PLATFORM_QT_DEPS}
 			-no-feature-designer \
 			-nomake tests \
 			-nomake examples \
-			-skip qt3d \
-			-skip qtactiveqt \
-			-skip qtcharts \
-			-skip qtcoap \
-			-skip qtconnectivity \
-			-skip qtdatavis3d \
-			-skip qtdeclarative \
-			-skip qtdoc \
-			-skip qtgraphs \
-			-skip qtgrpc \
-			-skip qthttpserver \
-			-skip qtlanguageserver \
-			-skip qtlocation \
-			-skip qtlottie \
-			-skip qtmqtt \
-			-skip qtmultimedia \
-			-skip qtnetworkauth \
-			-skip qtopcua \
-			-skip qtpositioning \
-			-skip qtquick3d \
-			-skip qtquick3dphysics \
-			-skip qtquickeffectmaker \
-			-skip qtquicktimeline \
-			-skip qtremoteobjects \
-			-skip qtscxml \
-			-skip qtsensors \
-			-skip qtserialbus \
-			-skip qtserialport \
-			-skip qtshadertools \
-			-skip qtspeech \
-			-skip qttranslations \
-			-skip qtvirtualkeyboard \
-			-skip qtwebchannel \
-			-skip qtwebengine \
-			-skip qtwebsockets \
-			-skip qtwebview \
+			-D BUILD_qt3d=OFF \
+			-D BUILD_qtactiveqt=OFF \
+			-D BUILD_qtcanvaspainter=OFF \
+			-D BUILD_qtcharts=OFF \
+			-D BUILD_qtcoap=OFF \
+			-D BUILD_qtconnectivity=OFF \
+			-D BUILD_qtdatavis3d=OFF \
+			-D BUILD_qtdeclarative=OFF \
+			-D BUILD_qtdoc=OFF \
+			-D BUILD_qtgraphs=OFF \
+			-D BUILD_qtgrpc=OFF \
+			-D BUILD_qthttpserver=OFF \
+			-D BUILD_qtlanguageserver=OFF \
+			-D BUILD_qtlocation=OFF \
+			-D BUILD_qtlottie=OFF \
+			-D BUILD_qtmqtt=OFF \
+			-D BUILD_qtmultimedia=OFF \
+			-D BUILD_qtnetworkauth=OFF \
+			-D BUILD_qtopcua=OFF \
+			-D BUILD_qtpositioning=OFF \
+			-D BUILD_qtquick3d=OFF \
+			-D BUILD_qtquick3dphysics=OFF \
+			-D BUILD_qtquickeffectmaker=OFF \
+			-D BUILD_qtquicktimeline=OFF \
+			-D BUILD_qtremoteobjects=OFF \
+			-D BUILD_qtscxml=OFF \
+			-D BUILD_qtsensors=OFF \
+			-D BUILD_qtserialbus=OFF \
+			-D BUILD_qtserialport=OFF \
+			-D BUILD_qtshadertools=OFF \
+			-D BUILD_qtspeech=OFF \
+			-D BUILD_qttranslations=OFF \
+			-D BUILD_qtvirtualkeyboard=OFF \
+			-D BUILD_qtwebchannel=OFF \
+			-D BUILD_qtwebengine=OFF \
+			-D BUILD_qtwebsockets=OFF \
+			-D BUILD_qtwebview=OFF \
 			-DCMAKE_WrapClang_FOUND=false \
 			${PLATFORM_QT_OPTIONS}
 
