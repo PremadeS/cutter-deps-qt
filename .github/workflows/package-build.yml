@@ -70,14 +70,26 @@ jobs:
         chmod +x llvm.sh
         sudo ./llvm.sh 20
         apt list --installed
-        sudo apt remove llvm-10 clang-10 || true
         make ARCH=${{ matrix.arch }}
         echo UPLOAD_FILE=cutter-deps-qt-linux-${{ matrix.arch }}.tar.gz >> $GITHUB_ENV
         echo UPLOAD_ASSET_TYPE=application/gzip >> $GITHUB_ENV
-
-    - name: Create or Update Release
-      uses: softprops/action-gh-release@v2
-      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    - uses: actions/upload-artifact@v4
+      if: startsWith(github.event.ref, 'refs/tags') == false
+      with:
+        name: ${{ env.UPLOAD_FILE }}
+        path: ${{ env.UPLOAD_FILE }}
+        if-no-files-found: warn
+    - name: Get release
+      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+      id: get_release
+      uses: karliss/get-release@bee343636450eb2e9b85d9f1592d8d73c408dc74
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload release assets
+      if: steps.get_release.outputs.upload_url != null
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: v4
         name: Release v4
